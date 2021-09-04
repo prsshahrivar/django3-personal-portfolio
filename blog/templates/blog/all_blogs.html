@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<h1>Welcome to All Blogs Page!</h1>
+<h2>Parsa has Written {{ blogs.count }} Blog{{ blogs.count|pluralize }}</h2>
+
+{% for blog in blogs %}
+<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }} </h2></a>
+
+<p>{{ blog.description }}</p>
+
+<h5>{{ blog.date|date:'F jS Y' | upper}}</h5>
+{% endfor %}
+
+{% endblock %}
+</body>
+</html>
